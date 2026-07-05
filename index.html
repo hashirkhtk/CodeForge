@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeForge — Learn to code, one workshop at a time</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Code<span>Forge</span></div>
+    <div class="nav-links">
+      <a href="#events">Events</a>
+      <a href="#register">Register</a>
+      <a href="#notes">Notes</a>
+    </div>
+    <a href="admin.html" class="nav-cta">Organizer</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Beginner-friendly &middot; Online &middot; Community-run</span>
+    <h1>Learn to code, <span class="accent">one workshop at a time.</span></h1>
+    <p class="lead">CodeForge runs short, beginner-friendly coding workshops online. No experience needed — just curiosity and a laptop.</p>
+    <div class="cta-row">
+      <a href="#events" class="btn-primary">See upcoming events</a>
+      <a href="#notes" class="btn-secondary">Access my notes</a>
+    </div>
+
+    <div class="stat-row" id="stat-row">
+      <div class="stat-card"><div class="num" id="stat-events">—</div><div class="label">Upcoming events</div></div>
+      <div class="stat-card"><div class="num">0</div><div class="label">Prior experience needed</div></div>
+      <div class="stat-card"><div class="num">100%</div><div class="label">Online</div></div>
+      <div class="stat-card"><div class="num">✓</div><div class="label">Certificate included</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <span class="eyebrow">Events</span>
+    <h2 style="font-size:30px; margin-bottom:8px;">Upcoming workshops</h2>
+    <p style="color:var(--text-dim);">Pick one below and register — details and payment info are on the registration section.</p>
+    <div class="events-grid" id="events-grid">
+      <p style="color:var(--text-dim);">Loading events…</p>
+    </div>
+  </div>
+</section>
+
+<section id="curriculum-section" style="display:none;">
+  <div class="wrap">
+    <span class="eyebrow">Curriculum</span>
+    <h2 style="font-size:30px; margin-bottom:16px;" id="curriculum-title">Curriculum</h2>
+    <div id="curriculum-weeks"></div>
+  </div>
+</section>
+
+<section id="register" style="background:var(--bg-panel);">
+  <div class="wrap register-grid">
+    <div>
+      <span class="eyebrow">Registration</span>
+      <h2 style="font-size:30px; margin-bottom:16px;">Save your seat</h2>
+      <p style="color:var(--text-dim); margin-bottom:24px;">Choose your event, fill the form, and send payment using the details shown. Your notes access code will be sent to your WhatsApp once we verify it.</p>
+
+      <form id="reg-form">
+        <label>Event</label>
+        <select id="f-event" required>
+          <option value="">Select an event</option>
+        </select>
+        <label>Full name</label>
+        <input type="text" id="f-name" required placeholder="Your full name">
+        <label>Email</label>
+        <input type="email" id="f-email" required placeholder="you@email.com">
+        <label>WhatsApp number</label>
+        <input type="tel" id="f-whatsapp" required placeholder="03xx-xxxxxxx">
+        <label>Education level</label>
+        <select id="f-education" required>
+          <option value="">Select one</option>
+          <option>School</option>
+          <option>College</option>
+          <option>University</option>
+          <option>Other</option>
+        </select>
+        <label>Payment transaction ID</label>
+        <input type="text" id="f-txn" required placeholder="From your EasyPaisa/JazzCash receipt">
+        <button type="submit" class="btn-primary" style="margin-top:6px;">Submit registration</button>
+        <div id="reg-status" class="status-msg"></div>
+      </form>
+    </div>
+
+    <div class="payment-box" id="payment-box">
+      <h3>Payment details</h3>
+      <p style="color:var(--text-dim); font-size:13.5px;">Select an event above to see payment details.</p>
+    </div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <span class="eyebrow">Notes & resources</span>
+    <h2 style="font-size:30px; margin-bottom:16px;">Unlock your notes</h2>
+    <div class="notes-lock">
+      <p style="color:var(--text-dim); margin-bottom:16px;">Enter the access code sent to your WhatsApp after payment verification.</p>
+      <input type="text" id="access-code-input" placeholder="ACCESS CODE">
+      <button class="btn-primary" onclick="checkAccessCode()">Unlock notes</button>
+      <div id="unlock-status" class="status-msg"></div>
+    </div>
+    <div class="notes-grid" id="notes-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">CodeForge &middot; @codeforge &middot; codeforge@email.com</div>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

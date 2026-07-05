@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeForge — Organizer dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="login-view" class="login-box">
+  <h1 style="font-size:22px; margin-bottom:6px;">Code<span style="color:var(--mint);">Forge</span></h1>
+  <p style="color:var(--text-dim); font-size:13.5px; margin-bottom:24px;">Organizer dashboard</p>
+  <div class="card">
+    <form id="login-form">
+      <label>Email</label>
+      <input type="email" id="login-email" required placeholder="you@email.com">
+      <label>Password</label>
+      <input type="password" id="login-password" required placeholder="••••••••">
+      <button type="submit" class="btn-primary" style="margin-top:10px;">Sign in</button>
+      <div id="login-status" class="status-msg"></div>
+    </form>
+  </div>
+</div>
+
+<div id="dashboard-view" class="admin-shell wrap" style="display:none;">
+  <div class="admin-header">
+    <div class="logo">Code<span>Forge</span> · Organizer</div>
+    <button class="mini-btn secondary" onclick="handleSignOut()">Sign out</button>
+  </div>
+
+  <div class="admin-tabs">
+    <div class="admin-tab active" data-tab="events">Events</div>
+    <div class="admin-tab" data-tab="registrations">Registrations</div>
+  </div>
+
+  <div class="admin-view active" id="tab-events">
+    <div class="card">
+      <h3 style="margin-bottom:16px;">Add a new event</h3>
+      <form id="event-form">
+        <label>Title</label>
+        <input type="text" id="ev-title" required placeholder="e.g. Beginner Coding Workshop">
+        <label>Tagline</label>
+        <input type="text" id="ev-tagline" placeholder="e.g. Zero to hero in one month">
+        <label>Description</label>
+        <textarea id="ev-description" rows="2" placeholder="Short description shown on the event card"></textarea>
+        <label>Event date (text, e.g. "1 August 2026")</label>
+        <input type="text" id="ev-date" placeholder="1 August 2026">
+        <label>Entry fee (PKR)</label>
+        <input type="text" id="ev-fee" placeholder="200">
+        <label>EasyPaisa number</label>
+        <input type="text" id="ev-easypaisa" placeholder="03xx-xxxxxxx">
+        <label>JazzCash number</label>
+        <input type="text" id="ev-jazzcash" placeholder="03xx-xxxxxxx">
+        <label>Account title</label>
+        <input type="text" id="ev-account-title" placeholder="CodeForge">
+
+        <label style="margin-top:8px;">Curriculum weeks</label>
+        <div id="week-inputs"></div>
+        <button type="button" class="mini-btn secondary" style="align-self:flex-start;" onclick="addWeekRow()">+ Add week</button>
+
+        <label style="display:flex; align-items:center; gap:8px; margin-top:10px; flex-direction:row;">
+          <input type="checkbox" id="ev-active" checked style="width:auto;"> Mark this event as active (visible to visitors)
+        </label>
+
+        <button type="submit" class="btn-primary" style="margin-top:12px;">Save event</button>
+        <div id="event-status" class="status-msg"></div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px;">All events</h3>
+      <div id="events-list"><p style="color:var(--text-dim);">Loading…</p></div>
+    </div>
+  </div>
+
+  <div class="admin-view" id="tab-registrations">
+    <div class="card">
+      <h3 style="margin-bottom:12px;">Filter by event</h3>
+      <select id="reg-filter" style="max-width:320px;">
+        <option value="">All events</option>
+      </select>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px;">Registrations</h3>
+      <div id="registrations-list"><p style="color:var(--text-dim);">Loading…</p></div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
